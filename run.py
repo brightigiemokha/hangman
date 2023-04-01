@@ -45,7 +45,7 @@ def play(word):
     print(word_completion)
     print("\n")
     while not choosed and tries > 0:
-        choose = input("Please choose a letter or word: ").upper()
+        choose = input("Please choose a letter or word:\n").upper()
         if len(choose) == 1 and choose.isalpha():
             if choose in choosed_letters:
                 print("You already choosed the letter", choose)
@@ -166,7 +166,7 @@ def main():
     """
     word = get_word()
     play(word)
-    while input("Play Again? (Y/N) ").upper() == "Y":
+    while input("Play Again? (Y/N)\n").upper() == "Y":
         word = get_word()
         play(word)
 
