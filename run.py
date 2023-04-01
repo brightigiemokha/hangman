@@ -35,7 +35,6 @@ def play(word):
     under-score when user choose wrong letters are made
     """
 
-    actually get playing the game 
     word_completion = "_" * len(word)
     choosed = False
     choosed_letters = []
@@ -89,3 +88,74 @@ def play(word):
         print("Congrats, you choosed the word! You win!")
     else:
         print("Sorry, you ran out of chances. The word was " + word + ". try again next time!")
+
+
+def display_hangman(tries):
+    """
+    hangman image design for every score/points scored
+    """
+    stages = [  # complete score: head, torso, both arms, and both legs
+                """
+                   ---------
+                   ||      |
+                   ||      o
+                   ||     \|/
+                   ||      |
+                   ||     / \
+                """,
+                # almost complete: head, torso, both arms, and one leg
+                """
+                   --------
+                   ||      |
+                   ||      O
+                   ||     \|/
+                   ||      |
+                   ||     / 
+                """,
+                # two more to go: head, torso, and both arms
+                """
+                   ---------
+                   ||      |
+                   ||      O
+                   ||     \|/
+                   ||      |
+                   ||      
+                """,
+                # impressive: head, torso, and one arm
+                """
+                   ---------
+                   ||      |
+                   ||      O
+                   ||     \|
+                   ||      |
+                   ||     
+                """,
+                # improving: head and torso
+                """
+                   ---------
+                   ||      |
+                   ||      O
+                   ||      |
+                   ||     |
+                   ||     
+                """,
+                # good job: head
+                """
+                   ---------
+                   ||      |
+                   ||      O
+                   ||   
+                   ||      
+                   ||     
+                """,
+                #  empty state
+                """
+                   --------
+                   ||      |
+                   ||      
+                   ||    
+                   ||      
+                   ||     
+                """
+    ]
+    return stages[tries]
