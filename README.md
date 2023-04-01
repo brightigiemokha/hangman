@@ -1,16 +1,15 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-# Python Quiz
+# HangMan Game
 
-The Python Quiz is a short knowledge test about python for newbies with 10  multiple choice questions.
-The institutions that offer python courses could apply the quiz to their students and analyze the data to see what the students have the most difficulty with. The spreadsheet can be used to generate graphs to facilitate data analysis. 
+The Hangman game is a beautiful guess game for fun and spelling guess. you choose / guess a word or letter and if its in the database then you will get a pass which means you save the man from hanging otherwise its a fail which mean you hang the man piece by piece by every mistake and you have 6 fail attempts before the game is over. good luck.
 
-![Python Quiz](documentation/initial.png)
+![Python Quiz](image/hangman1.png)
 
 
 ## Demo
 
-A live demo can be found [here](https://quizpython.herokuapp.com/). The Application was deployes by Heroku.
+A live demo can be found [here](https://hangmanapp.herokuapp.com/). The Application was deployes by Heroku.
 
 - - -
 
@@ -35,24 +34,21 @@ A live demo can be found [here](https://quizpython.herokuapp.com/). The Applicat
 * Python3
 
 ## Libraries
-* os 
-* time
-* colorama
-* pyfiglet
+* gspread 
+* random
+
 
 ## Frameworks & Tools
 * Heroku Platform - to deploy the application into live enviroment
 * Gitpod - to create the website
 * Github - to store the repository of website and deploy it
-* QuickTime Player - to record and edit the video
 * Google Sheets API: to handle the data automation.
-* [Draw](https://app.diagrams.net/) - to draw a flowchart
 
 For this project a [Code Institute template](https://github.com/Code-Institute-Org/python-essentials-template), which provides all the files I needed to run the mock terminal in the browser.
 
-The questions and options are collected from the questions worksheet and the choices from update the answers worksheet. 
-![Spreadsheet](documentation/questions.png)
-![Spreadsheet](documentation/answers.png)
+The words are all stored on the google sheet. 
+![Spreadsheet](image/spreadsheet.png)
+
 
 - - - 
 
@@ -64,106 +60,56 @@ The questions and options are collected from the questions worksheet and the cho
 
 ## User stories:
 
-* As a new user, I expetc to easily to have an idea of what the program is about.
+* As a new user, I expect to easily to have an idea of what the program is about.
 * I want to be guided and informed how I can play the quiz 
 * I want to have a clear feedback from inputs
 * I want to have option either to play again or to exit the program
-* I expect to restart the quiz 
 
 ## How to play:
 
-- Firstly, the user needs to enter a valid name to start the game.
-- Secondly, the user can read the instructions.
-- Thirdly, the quiz will start and the user needs to guess a, b, c or d as his/her choice.
-- The score increases by one for each right choice.
-- After the 10 questions, the user's score will be displayed.
-- Finally, the user will be asked if he/her wants to play again.
+- Firstly, the user needs to guess a character from A - Z and if this character match
+  the word that is in the sheet that the system have randomly choosed the user get to 
+    choose another character until a complete spelling is done. and if the user give
+    a wrong character they get notified that the character was incorrect but still get
+    the chance to keep playing until after 6 failed attempt which will make the man hang.
+    a full picture of the hangman appears.
+
 
 - - -
-# Design
-
-Due to the template that is added in the front-end files needed to give the users a way to interact with this project in a fake terminal on a web page, no changes in other files were needed.
-
-## Flowchart
-This Flowchart was created using drawio to summarise the structure and logic of the application.
-
-![Flowchart](documentation/flowchart%20.png)
-
 
 ## Existing Features
 
 ### Introduction
-- Once the user runs the program, Python Quiz is dsplayed.
+- Once the user runs the program, let's play Hangmen is dsplayed at the heading and the game starts.
 
-![Introduction](documentation/intro.png)
 
 ### Username
 
-- User is asked to enter his/her name using letters only.
+- User is asked to choose a letter or word when they enter the correct character they get a feed back.
 
-![Username](documentation/name_input.png)
+![Username](image/good.png)
 
-- When the user enters a valid name, the instructions are displayed.
+- When the user enters a wrong character, they recieve a feedback of : this is not in the word.
 
-![Instructions](documentation/instructions.png)
+![Instructions](image/wrong.png)
 
-- If user enters a invalid name, he will be asking for a valid username again.
+- If user enters a invalid charactor or number, use will get a feedback of: Not a valid choice.
 
-![Invalid Username](documentation/invalid_name.png)
+![Invalid Username](image/invalid.png)
 
-### Quiz
 
-- After the instructions have been displayed, the quiz will start automatically. The questions are presented separately with four options. The user is guided to choose a, b, c or d.
+![Play Again](image/playagain.png)
 
-![Questions](documentation/first_question.png)
+- If the user wants to play again a message to try again will be displayed after evetry game and the user have
+to choose Y = yes of N = no,
 
-### Feedback on each question
 
-- If the user's choice is valid, it will be displayed whether he got it right or wrong.
-
-![Correct Choice](documentation/correct_choice.png)
-
-![Wrong Choice](documentation/wrong_choice.png)
-
-- If the input is invalid, the user will be asked until his choice is valid.
-
-![Invalid Choice](documentation/invalid_choice.png)
-
-### Score
-
-- After the 10 questions the score will be displayed.
-
-![Score](documentation/score.png)
-
-### Play again
-
-- The user will be asked if he wants to play again or not.
-
-![Play Again](documentation/play_again.png)
-
-- If the user wants to play again a message to try again will be displayed for 2 seconds and after that the quiz will start again.
-
-![Try Again](documentation/try_again.png)
-
-- If the user doesn't want to play again a a thank you message will be displayed and the application exits.
-
-![Game Over](documentation/game_over.png)
 
 ### Run program button
 - The user can press the "RUN PROGRAM" button at any time to restart the program.
-![Run Program Button](documentation/run_program_button.png)
-
-### Update the spreadsheet
-- The answers worksheet is updated correctly.
-![Update](documentation/update.png)
+![Run Program Button](image/runprogram.png)
 
 
-## Future Implementations
-- Various question levels
-- Library of questions to be used randomly
-- Graphs to evaluate which questions had the most hits or errors, error and hit percentages for each question. 
-
-Graphical libraries will not deploy to heroku and deployment is necessary for completion and submission of my project.
 
 - - -
 # Deployment
@@ -190,14 +136,14 @@ The sensitive data needs to be kept secret and Heroku will build the app using t
 * If prefered, click on "Enable Automatic Deploys", which keeps the app up to date with your GitHub repository.
 * Wait for the app to build. Once ready you will see the “App was successfully deployed” message and a 'View' button to take you to your deployed link.
 
-[GitHub repository](https://github.com/luandretta/quiz-python) 
+[GitHub repository](https://github.com/brightigiemokha/hangman) 
 
 
 ## Run locally
 
 **Making a Local Clone**
 1. Login or Sign Up to GitHub.
-2. Open the project [repository](https://github.com/luandretta/quiz-python).
+2. Open the project [repository](https://brightigiemokha/hangman).
 3. Click on the code button, select whether you would like to clone with HTTPS, SSH or GitHub CLI and copy the link shown.
 4. Open the terminal in the code editor of your choice and change the current working directory to the location you want to use for the cloned directory.
 5. Type 'git clone' into the terminal and then paste the link you copied in step 3. Press enter.
@@ -214,7 +160,7 @@ $ git reset HEAD YOUR-FILE
 
 Commit the files that you've staged in your local repository:
 ```bash
-$ git commit -m "First commit"
+$ git commit -m "innitial commit"
 # Commits the tracked changes and prepares them to be pushed to a remote repository. To remove this commit and modify the file, use 'git reset --soft HEAD~1' and commit and add the file again.
 ```
 
@@ -227,7 +173,7 @@ $ git push origin main
 **Forking the GitHub Repository**
 To fork this website to either propose changes or to use as an idea for another website, follow these steps:
 1. Login or Sign Up to GitHub.
-2. Open the project [repository](https://github.com/luandretta/quiz-python).
+2. Open the project [repository](https://github.com/brightigiemokha/hangman).
 3. Click the Fork button in the top right corner.
 4. Copy of the repository will be in your own GitHub account.
 
@@ -240,7 +186,7 @@ To deploy from GitHub, follow these steps:
 5. The page should automatically refresh with a url displayed.
 6. Test the link by clicking on the url.
 
-The url for this website can be found [here](https://quizpython.herokuapp.com/) 
+The url for this website can be found [here](https://hangmanapp.herokuapp.com/) 
 
 ## Create data model and integrate using an API
 
@@ -315,78 +261,24 @@ The terminal was used during the development of the application to identify and 
 
 ## Functionality
 ### Validator
-CI Python Linter was used to validate this project, no errors were returned.
-![CI Python Linter](documentation/python_linter.png)
+CI Python Linter was used to validate this project, 1 error was found "97: E501 line too long (95 > 79 characters)" and didnt get that off as i didnt have time to get more help to getting this off.  4 other warning where due to the scii diagram and it was unavoidable.
+![CI Python Linter](image/codeerror2.png) (image/errorcode3.png) (image/errors4.png)
 
-### Manual: 
-
-|N.| Test Label | Test Action | Expected Outcome | Test Outcome |
-|:---|:--- |:--- |:--- |:--- |
-|01| Type valid username | On input field, attempt to type a valid username (only alpha caracters) | Username was valid and the application continues| PASS |
-|02| Type invalid username | On input field, attempt to type a invalid username (with numbers) | Username was invalid and user needs to enter a valid username | PASS |
-|03| Type whitespaces before username | On input field, attempt to type a valid username (only alpha caracters) | Username was valid and the application continues| PASS |
-|04| Quiz questions| The quiz starts with the first question, after a valid choice from user, runs the following question | All questions are displayed correctly| PASS |
-|05| Valid choice | On input field, attempt to type a valid choice (a, b, c or d) | Choice was valid and the quiz continues| PASS |
-|06| Invalid choice | On input field, attempt to type a invalid choice (number, empty and other invalid alpha) | Choice was invalid and user needs to enter a valid choice to continue the quiz| PASS |
-|07| Display correct answer| Type a correct answer | It displays a message confirming the correct choice| PASS |
-|08| Display incorrect answer| Type a incorrect answer | It displays a message confirming the incorrect choice| PASS |
-|09| Score 10 | Attempt to score 10 | The score increases by one for each right choice and total = 10| PASS |
-|10| Score 5 | Attempt to score 5 | The score increases by one for each right choice and total = 5| PASS |
-|11| Score 0 | Attempt to score 0 | The score will be 0 | PASS |
-|12| Final message score >= 7 | Score 7 or more  | It displays a congratulation message correctly | PASS |
-|13| Final message score < 7 | Score < 7  | It displays an enconraging message to try the quiz again | PASS |
-|14| Play again | User wants to play again and enters y| The quiz starts again asking username| PASS |
-|15| Exit | User doesn't want to play again and enters n| The quiz ends| PASS |
-|16| Invalid Input (Y/N) | Type invalid letter | A valid input is required| PASS |
-|17| Invalid Input (Y/N) | Type  number | A valid input is required| PASS |
-|18| Invalid Input (Y/N) | Empty input | A valid input is required| PASS |
-|19| Input with whitespace (Y/N) | Attempt to leave some whitespaces before valid input | Input is valid| PASS |
-|20| Input y or n | Type y in smallcase | Input is valid| PASS |
-|21| Restart Game Button| Click on the restart game button| The quiz restarts | PASS |
-|22| Update the worksheet| Check the answers in the worksheet| The worksheet was updated with user answers correctly| PASS |
-|23| Colors | Run the quiz | Text colors are displayed according to code | PASS |
-
-Video recorded and edited with testing:
-
-![Click here to watch](https://user-images.githubusercontent.com/113333171/215458158-93a40e6b-90d6-483b-a4d0-ca6a51c670af.mp4)
-
-## Compatibility
-The website displays correctly across different browsers and screen sizes.
 
 
 ## Solved bugs
-* When the correct answers from the spreadsheet were accessed for comparison with the user's guesses, the correct answers returned a list with a list.
-
-![Python Quiz](documentation/bug_1.png)
-
-Fixed this with another variable accessing index zero of the list, which contains all the correct answers.
+* there where no Bugs.
 
 ```
-  answers = SHEET.worksheet("answers").get("B1:K1")
-  correct_answers = answers[0]
-```
-
-* To update the sheet with username and its answers was used append, however the focus was not the username but the answers, so the append method was changed to insert for the updated sheet with the row order properly.
-
-* Added docstring to the first line.
-
-* The Python Quiz logo was showing up after call clear. If the user scrowlls the screen up, he/she could see the half of the logo. Fixed the function clear with print('\033c') and not using os.
-
-* The BLUE color did not get good contrast on some monitors, so it was changed to CYAN and the yellow and green colors to white. The screenshots were taken before the final color adjustments, but the final result can be evaluated through video testing or live.
-
-* The testing video didn't work in Gitpod, so it was added by drag and drop directly on Github. Because of this, a merge was necessary. 
 
 
-If the user types in a choice, clicks enter and quickly types in another choice, this value will be considered as the next input. The fast input bug might have something to do with how Python processes inputs from the Linux terminal. In most cases the user types his choice after reading the question and options and not quickly after clicking on enter. 
-
-
-The following changes or additions were made as advised by my mentor, not considered as bugs, but for code improvement:
+The following changes or additions were made as advised by my slack team, not considered as bugs, but for code improvement:
 
 * Used strip() on inputs to remove unwanted leading or trailing spaces.
 * Better explanation of input requirements.
-* Descriptive name instead of using i or j.
 * Add a main function 
 * Add a ``` __name__ == “__main__” ``` to control the execution of the script.
+* setting the Y/N options and \N for line space.
 
 # Credits
 ## Code
@@ -395,24 +287,23 @@ The following sources were used for this project:
 - [Gspread](https://docs.gspread.org/en/latest/user-guide.html#getting-all-values-from-a-row-or-a-column)
 - [Develop Google Sheets solutions](https://developers.google.com/sheets/api/guides/values)
 - [W3 Schools](https://www.w3schools.com/python/default.asp#gsc.tab=0)
-- [Data Camp](https://www.datacamp.com/tutorial/for-loops-in-python)
-- [Python.org](https://peps.python.org/pep-0008/#introduction)
 - [Stack overflow](https://stackoverflow.com/questions/21939652/insert-at-first-position-of-a-list-in-python)
 - [Dev Dungeon](https://www.devdungeon.com/content/create-ascii-art-text-banners-python#use_pyfiglet_python)
-- [Markdown Guide](https://www.markdownguide.org/extended-syntax/#tables)
-- [Conventinal Commits](https://www.conventionalcommits.org/en/v1.0.0/) 
+
 
 
 ## Acknowledgements
-* To my amazing family for their patiences.
+* To my God, who guides me to find all the guidance I need to program.
 
-* To God, who guides me to find all the guidance I need to program.
+* To my amazing family for their amazing patiences.
 
-* My Mentor Brian Macharia for continuous helpful feedback.
+* My Mentor slack friend and guides for continuous helpful feedback.
+
+* To Tomislav , Andretta  & Marlos for always pointing me in right directions
 
 - - - 
 
-Developed By Lucimeri Andretta for Code Institute's Portfolio Project 3 - 2023
+Developed By Bright Igemokha Anyiador for Code Institute's Portfolio Project 3 - 2023
 This code will not be changed until the end of the course.
-Feel free to connect with me on [Linkedin](www.linkedin.com/in/luandretta) :)
+Feel free to connect with me on [Linkedin](https://www.linkedin.com/in/bright-anyiador-523746254/) :)
 
