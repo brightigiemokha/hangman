@@ -168,6 +168,17 @@ def display_hangman(tries):
     return stages[tries]
 
 
+def play_onceagain():
+    while True:
+        choice = input("Play Again? (Y/N)\n").upper()
+        if choice == "Y":
+            return True
+        elif choice == "N":
+            exit()
+        else:
+            print("Yes or No :-)")
+
+
 def main():
     """
     final stage, user invited to try again
@@ -175,7 +186,7 @@ def main():
 
     word = get_word()
     play(word)
-    while input("Play Again? (Y/N)\n").upper() == "Y":
+    while play_onceagain():
         word = get_word()
         play(word)
 
