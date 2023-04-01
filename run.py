@@ -1,6 +1,5 @@
 import random
 import gspread
-
 from google.oauth2.service_account import Credentials
 
 
@@ -22,16 +21,20 @@ word_list = words.col_values(1)
 
 
 def get_word():
-    """this is to get the word from our sheets above and randomly select the words
-    in no particular order, also to make the user's input uppercase for easy visual.
+    """
+    this is to get the word from our sheets above and randomly
+    select the words in no particular order, also to make the user's
+    input uppercase for easy visual.
     """
 
     word = random.choice(word_list)
     return word.upper()
 
+
 def play(word):
     """
-    show letter when user choosed correct letter when correct letters are made and  
+    show letter when user choosed correct letter
+    when correct letters are made and
     under-score when user choose wrong letters are made
     """
 
@@ -39,7 +42,8 @@ def play(word):
     choosed = False
     choosed_letters = []
     choosed_words = []
-    tries = 10 # number of try the user have until the complete hangman is shown.
+    # number of try the user have until the complete hangman is shown.
+    tries = 6
     print("Let's play Hangman!!!")
     print(display_hangman(tries))
     print(word_completion)
@@ -52,7 +56,8 @@ def play(word):
             elif choose not in word:
                 """
                 if user choose the wrong letter/words then this is printed
-                """                
+                """
+
                 print(choose, "is not in the word.")
                 tries -= 1
                 choosed_letters.append(choose)
@@ -60,10 +65,12 @@ def play(word):
                 """
                 if user choose the right letter/words then this is printed
                 """
+
                 print("Good job,", choose, "is in the word!")
                 choosed_letters.append(choose)
                 word_as_list = list(word_completion)
-                indices = [i for i, letter in enumerate(word) if letter == choose]
+                indices = [i for i, letter in enumerate(
+                    word) if letter == choose]
                 for index in indices:
                     word_as_list[index] = choose
                 word_completion = "".join(word_as_list)
@@ -110,7 +117,7 @@ def display_hangman(tries):
                    ||      O
                    ||     \|/
                    ||      |
-                   ||     / 
+                   ||     /
                 """,
                 # two more to go: head, torso, and both arms
                 """
@@ -119,7 +126,7 @@ def display_hangman(tries):
                    ||      O
                    ||     \|/
                    ||      |
-                   ||      
+                   ||
                 """,
                 # impressive: head, torso, and one arm
                 """
@@ -128,7 +135,7 @@ def display_hangman(tries):
                    ||      O
                    ||     \|
                    ||      |
-                   ||     
+                   ||
                 """,
                 # improving: head and torso
                 """
@@ -137,33 +144,35 @@ def display_hangman(tries):
                    ||      O
                    ||      |
                    ||     |
-                   ||     
+                   ||
                 """,
                 # good job: head
                 """
                    ---------
                    ||      |
                    ||      O
-                   ||   
-                   ||      
-                   ||     
+                   ||
+                   ||
+                   ||
                 """,
                 #  empty state
                 """
                    --------
                    ||      |
-                   ||      
-                   ||    
-                   ||      
-                   ||     
+                   ||
+                   ||
+                   ||
+                   ||
                 """
     ]
     return stages[tries]
+
 
 def main():
     """
     final stage, user invited to try again
     """
+
     word = get_word()
     play(word)
     while input("Play Again? (Y/N)\n").upper() == "Y":
