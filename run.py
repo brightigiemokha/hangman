@@ -39,13 +39,13 @@ def play(word):
     choosed = False
     choosed_letters = []
     choosed_words = []
-    tries = 6 # number of try the user have until the complete hangman is shown.
+    tries = 10 # number of try the user have until the complete hangman is shown.
     print("Let's play Hangman!!!")
     print(display_hangman(tries))
     print(word_completion)
     print("\n")
-    while not guessed and tries > 0:
-        guess = input("Please choose a letter or word: ").upper()
+    while not choosed and tries > 0:
+        choose = input("Please choose a letter or word: ").upper()
         if len(choose) == 1 and choose.isalpha():
             if choose in choosed_letters:
                 print("You already choosed the letter", choose)
@@ -63,7 +63,7 @@ def play(word):
                 print("Good job,", choose, "is in the word!")
                 choosed_letters.append(choose)
                 word_as_list = list(word_completion)
-                indices = [i for i, letter in enumerate(word) if letter == guess]
+                indices = [i for i, letter in enumerate(word) if letter == choose]
                 for index in indices:
                     word_as_list[index] = choose
                 word_completion = "".join(word_as_list)
@@ -84,7 +84,7 @@ def play(word):
         print(display_hangman(tries))
         print(word_completion)
         print("\n")
-    if guessed:
+    if choosed:
         print("Congrats, you choosed the word! You win!")
     else:
         print("Sorry, you ran out of chances. The word was " + word + ". try again next time!")
