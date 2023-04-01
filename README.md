@@ -251,7 +251,7 @@ from google.oauth2.service_account import Credentials
 CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD.open("quiz_python")
+SHEET = GSPREAD.open("hangman")
 ```
 
 ---
