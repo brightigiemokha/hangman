@@ -169,6 +169,11 @@ def display_hangman(tries):
 
 
 def play_onceagain():
+    """
+    for options to play again or to stop game
+    Y = yes and N = no
+    """
+
     while True:
         choice = input("Play Again? (Y/N)\n").upper()
         if choice == "Y":
@@ -181,7 +186,7 @@ def play_onceagain():
 
 def main():
     """
-    final stage, user invited to try again
+    call all the
     """
 
     word = get_word()
