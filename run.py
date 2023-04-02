@@ -186,7 +186,8 @@ def play_onceagain():
 
 def main():
     """
-    call all the
+    main function to put everything together
+    with options to play once and again if needed
     """
 
     word = get_word()
